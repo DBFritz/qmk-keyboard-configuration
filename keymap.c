@@ -86,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT( \
   KC_F12,       KC_F1,         KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,     KC_F7,      KC_F8,        KC_F9,    KC_F10,  KC_F11, \
-  KC_GRV,  RALT(KC_2),    RALT(KC_1), KC_CIRC, KC_RBRC, KC_SLSH,                       KC_NUBS, S(KC_NUBS),   KC_ASTR,      KC_LPRN, KC_LBRC, KC_BSPC, \
-  _______, RALT(KC_3), RALT(KC_SCLN), KC_LCBR, KC_RCBR, KC_AMPR,                       KC_LABK, KC_RABK, RALT(KC_QUOT), RALT(KC_TILD), KC_DLR, XXXXXXX, \
-  _______,    KC_QUES,       KC_MINS,   KC_AT, KC_RPRN, KC_PERC, _______,       _______, KC_EXLM, KC_UNDS, RALT(KC_LBRC), RALT(KC_RBRC), RALT(KC_GRV), _______, \
+  KC_GRV,  RALT(KC_2),    RALT(KC_1), KC_CIRC, KC_RBRC, KC_SLSH,                       KC_GRV, S(KC_GRV),   KC_ASTR,      KC_LPRN, KC_LBRC, KC_BSPC, \
+  _______, RALT(KC_3), RALT(KC_SCLN), KC_LCBR, KC_RCBR, KC_AMPR,                       KC_LABK, KC_RABK, RALT(KC_QUOT), RALT(KC_BSLS), KC_DLR, XXXXXXX, \
+  _______,    KC_QUES,       KC_MINS,   KC_AT, KC_RPRN, KC_PERC, _______,       _______, KC_EXLM, KC_UNDS, RALT(KC_LBRC), RALT(KC_RBRC), RALT(KC_TILD), _______, \
                _______,    _______,     _______,    _______,   KC_TAB,           _______, _______, _______, _______, _______\
 ),
 /* RAISE
@@ -374,7 +374,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return rotation;
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     /* KEYBOARD PET VARIABLES START */
 
     current_wpm   = get_current_wpm();
@@ -387,6 +387,7 @@ void oled_task_user(void) {
     } else {
         print_logo_narrow();
     }
+    return true;
 }
 
 #endif
